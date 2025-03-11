@@ -368,13 +368,6 @@ public class GUI extends Application {
             }
             tasksManagement.modifyTaskStatus(emp.getIdEmployee(), task.getIdTask());
 
-            if (task instanceof ComplexTask) {
-                ComplexTask complexTask = (ComplexTask) task;
-                for (Task subtask : complexTask.getSubtasks()) {
-                    tasksManagement.modifyTaskStatus(emp.getIdEmployee(), subtask.getIdTask());
-                }
-            }
-
             // update any complex tasks containing this task
             for (Task t : tasksManagement.getTasksToEmployees().get(emp)) {
                 if (t instanceof ComplexTask ct) {

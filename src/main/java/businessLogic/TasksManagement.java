@@ -81,16 +81,21 @@ public class TasksManagement implements Serializable {
         for(Task t : tasksToEmployees.get(employee)) {
             if(t.getIdTask() == idTask) {
                 if(t.getStatusTask().equals("Completed")) {
-                    t.setStatusTask("Uncompleted");
-                    System.out.println("Task " + idTask + " is now Uncompleted.");
-                } else {
-                    t.setStatusTask("Completed");
-                    System.out.println("Task " + idTask + " is now Completed.");
-                }
-                for (Task task : tasksToEmployees.get(employee)) {
-                    if (task instanceof ComplexTask complexTask) {
-                        complexTask.updateStatus();
+                    if(t instanceof ComplexTask) {
+                        for(Task task : ((ComplexTask) t).getSubtasks()) {
+                            task.setStatusTask("Uncompleted");
+                        }
+                        ((ComplexTask) t).updateStatus();
                     }
+                    t.setStatusTask("Uncompleted");
+                } else {
+                    if(t instanceof ComplexTask) {
+                        for(Task task : ((ComplexTask) t).getSubtasks()) {
+                            task.setStatusTask("Completed");
+                        }
+                        ((ComplexTask) t).updateStatus();
+                    }
+                    t.setStatusTask("Completed");
                 }
                 break;
             }
