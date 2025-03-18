@@ -101,6 +101,7 @@ public class GUI extends Application {
         loadItem.setOnAction(e -> {
             tasksManagement = DataPersistence.loadTaskManagement("tasksManagement.ser");
             dataPersistence = new DataPersistence(tasksManagement); // update DataPersistence instance
+            List<Employee> employees = DataPersistence.loadEmployees("employees.ser");
 
             employeeList.clear();
             taskList.clear();
@@ -300,11 +301,11 @@ public class GUI extends Application {
 
         // show the list of all employees
         ListView<Employee> empListView = new ListView<>(employeeList);
-        empListView.setPrefWidth(200);
+        empListView.setPrefWidth(300);
         empListView.setStyle("-fx-background-color: #ededff; -fx-border-color: black; -fx-border-width: 1;");
         empListView.setPlaceholder(new Label("No employees added")); // if the list is empty
 
-        viewTaskListView.setPrefWidth(400);
+        viewTaskListView.setPrefWidth(500);
         viewTaskListView.setPlaceholder(new Label("Select an employee to view tasks"));
         viewTaskListView.setStyle("-fx-background-color: #ededff; -fx-border-color: black; -fx-border-width: 1;");
 

@@ -9,7 +9,6 @@ module com.example.pt2025_30422_pasca_larisa_assignment_1 {
     exports businessLogic;
     opens businessLogic to javafx.fxml;
 
-    // Add these lines for your GUI package:
     exports graphicalUserInterface;
     opens graphicalUserInterface to javafx.graphics;
 }
