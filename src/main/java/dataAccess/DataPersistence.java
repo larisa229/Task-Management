@@ -25,6 +25,7 @@ public class DataPersistence implements Serializable {
         }
     }
 
+    //static because we want to call this method only using the class, this way it doesn't belong to an instance, but to the class
     public static TasksManagement loadTaskManagement(String filename) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             return (TasksManagement) ois.readObject();
