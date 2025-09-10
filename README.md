@@ -1,24 +1,28 @@
 # Task Management System
 
-A simple Java-based task management system that allows organizing tasks (simple and complex) and assigning them to employees. The system supports tracking task statuses, estimating task durations, and persisting data.
+This project is a Java-based task management system for organizing and tracking tasks assigned to employees. The system supports both simple tasks (with start/end hours) and complex tasks (with multiple subtasks), tracks their status, and provides workload statistics for employees. A JavaFX GUI is included for interaction, along with data persistence through serialization.
 
 ## Features
 
-- **Task Management**: Create, update, and delete tasks.
-  - Supports **SimpleTask** (with start and end hours).
-  - Supports **ComplexTask** consisting of multiple subtasks.
-- **Employee Management**: Add employees and assign tasks to them.
-- **Task Assignment**: Assign tasks to employees and track work durations.
-- **Status Tracking**: Tasks can be marked as "Completed" or "Uncompleted".
-- **Task Duration Estimation**: Calculate duration of tasks based on hours or subtasks.
-- **Data Persistence**: Save and load task management data, employees, and tasks from files.
-- **Filtering & Reporting**:
-  - Filter employees based on workload.
-  - Calculate task status counts per employee.
+- Create and manage simple tasks with start and end hours. Create complex tasks consisting of multiple subtasks, that can be either simple or complex.
+- Update and delete tasks (backend logic implemented).
+- Prevents duplicate task IDs.
+- Automatically updates complex task status based on the status of its subtasks.
+- Assign tasks to employees and estimate duration. View employees and their assigned tasks.
+- Statistics: filter employees with workload > 40 hours, count completed vs uncompleted tasks.
+- Save and load system data using serialization.
+- JavaFX GUI with tabs for management, viewing, modifting, and statistics.
 
-## Usage
-- Create employees and tasks.
-- Assign tasks to employees using TasksManagement.assignTaskToEmployee.
-- Modify task status with TasksManagement.modifyTaskStatus.
-- Calculate work durations and generate reports via utility methods.
-- Save/load data using DataPersistence.
+## Technologies Used
+- **Language:** Java
+- **Frameworks & Tools:** JavaFX, IntelliJ IDEA
+- **Concepts Used:** Object-Oriented Programming (OOP), Serialization, GUI Development
+
+## How It Works
+The system manages employees and tasks through internal mapping of employees to their assigned tasks. SimpleTask stores start and end hours and computes duration. ComplexTask groups subtasks and automatically updates its status based on them. Employees can be assigned multiple tasks, and workloads are calculated from task durations. Data persistence is handled by saving/loading serialized objects (.ser files).
+
+## Future Improvements
+- Export reports.
+- Add deadlines and priority levels to tasks.
+- Replace serialization with database persistence.
+- Add GUI support for updating and deleting tasksyeah.
